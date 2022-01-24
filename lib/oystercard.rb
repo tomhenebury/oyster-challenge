@@ -7,6 +7,8 @@ class Oystercard
     end
 
     def top_up(money)
+        fail "#{@balance} cannot exceed £90" if (money + @balance) >= 90
+
         @balance += money
     end
 end
