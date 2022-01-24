@@ -54,8 +54,8 @@ I need to have the correct fare calculated
 
 | Obj | Msg|
 | :-: | :-: |
-| Card | has_money |
-| | add_money |
+| Card | balance |
+| | top_up |
 | | limit_maximum_money |
 | | deduct_fare |
 | | check_min_funds |
