@@ -3,6 +3,7 @@ require './lib/oystercard.rb'
 describe Oystercard do
     
     let(:oystercard) { Oystercard.new }
+    let(:oystercard50) { Oystercard.new(50)} 
 
     it '#\'s initializes to 0' do
         expect(oystercard.balance).to eq 0
@@ -20,4 +21,10 @@ describe Oystercard do
       oystercard.top_up(90)
       expect{ oystercard.top_up(1) }.to raise_error "#{oystercard.balance} cannot exceed #{maximum_balance}"
     end
+
+    it '#can have money deducted' do
+        expect{oystercard50.deduct(20)}.to change { oystercard50.balance }.by(-20)
+    end
+
+
 end
