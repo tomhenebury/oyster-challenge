@@ -31,16 +31,21 @@ describe Oystercard do
     end
 
     it '#allows us to touch in' do
-        oystercard.touch_in
+        oystercard50.touch_in
 
-        expect(oystercard.in_journey?).to be true 
+        expect(oystercard50.in_journey?).to be true 
     end
 
     it '#allows us to touch out' do
-        oystercard.touch_in
+        oystercard50.touch_in
 
-        oystercard.touch_out
+        oystercard50.touch_out
 
-        expect(oystercard.in_journey?).to be false
+        expect(oystercard50.in_journey?).to be false
     end
+
+    it '#will not allows touch in with 0 balance' do
+        expect{oystercard.touch_in}.to raise_error "No Balance"
+    end
+
 end
