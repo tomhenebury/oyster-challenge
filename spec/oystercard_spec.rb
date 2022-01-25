@@ -22,10 +22,6 @@ describe Oystercard do
       expect{ oystercard.top_up(1) }.to raise_error "#{oystercard.balance} cannot exceed #{maximum_balance}"
     end
 
-    it '#can have money deducted' do
-        expect{oystercard50.deduct(20)}.to change { oystercard50.balance }.by(-20)
-    end
-
     it '#is in journey?' do
         expect(oystercard.in_journey?).to be false
     end
@@ -47,5 +43,9 @@ describe Oystercard do
     it '#will not allows touch in with 0 balance' do
         expect{oystercard.touch_in}.to raise_error "No Balance"
     end
+
+    it '#charges on touch out' do
+        expect{oystercard50.touch_out}.to change{oystercard50.balance}.by(-1)
+    end 
 
 end
